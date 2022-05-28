@@ -1,5 +1,16 @@
 # Xengine
 
-## Command Line Usage
+### Command Line Usage
 
-## App Usage
+```bash
+User@Profile Xengine -arg=value --flag
+```
+
+**Arguments**
+  - None
+
+**Flags**
+  - help 
+  	Used to provide help message reguarding command line usage
+
+### App Usage
