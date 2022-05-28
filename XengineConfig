@@ -3,9 +3,10 @@
 // Warning : this includes configurations that should not be
 //	     edited unless you know what your doing
 
-#ifndef XengineConfig
-#define XengineConfig
+#ifndef __XengineConfig
+#define __XengineConfig
 
 #define HELP_FLAG "--help"
+#define MAX_APPLICATIONS 10
 
 #endif
