@@ -1,0 +1,11 @@
+// Xengine Configuration File
+// All configurations for Xengine can be found in this file
+// Warning : this includes configurations that should not be
+//	     edited unless you know what your doing
+
+#ifndef XengineConfig
+#define XengineConfig
+
+#define HELP_FLAG "--help"
+
+#endif
