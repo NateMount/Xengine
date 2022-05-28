@@ -1,0 +1,3 @@
+#! /bin/bash
+
+gcc -o Xengine -Wall -Wextra -lpthread -lncurses Xengine.c
