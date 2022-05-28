@@ -3,7 +3,7 @@
 ### Command Line Usage
 
 ```bash
-User@Profile Xengine -arg=value --flag
+Xengine -arg=value --flag
 ```
 
 **Arguments**
@@ -11,6 +11,7 @@ User@Profile Xengine -arg=value --flag
 
 **Flags**
   - help 
-  	Used to provide help message reguarding command line usage
+    - Used to provide help message reguarding command line usage
+    - Will result in Xengine termination
 
 ### App Usage
