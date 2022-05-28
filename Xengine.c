@@ -5,6 +5,8 @@
 
 #include "XengineConfig"
 
+static void* applications[MAX_APPLICATIONS + 1];
+
 void xengine_init(){
 
 	initscr();
@@ -14,16 +16,29 @@ void xengine_init(){
 
 }
 
+void xengine_renderWidget(void* app){
+
+	
+
+}
+
 void xengine_renderView(){
+
+	int i;
+
+	for (i = 0; i < MAX_APPLICATIONS + 1; i++){
+		if (applications[i] != NULL){
+			xengine_renderWidget(applications[i]);
+		}
+	}
 
 }
 
 void xengine_viewManager(){
 
 	while (1){
-
 		xengine_renderView();
-
+		refresh();
 	}
 
 }
@@ -47,5 +62,4 @@ int main( int argc, char* argv[] ){
 
 	xengine_terminate();
 	exit(EXIT_SUCCESS);
-
 }
