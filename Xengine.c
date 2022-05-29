@@ -5,7 +5,15 @@
 
 #include "XengineConfig"
 
-static void* applications[MAX_APPLICATIONS + 1];
+typedef struct xengine_app {
+	int posX;
+	int posY;
+	int lenX;
+	int lenY;
+	char* (*getView)(void*);
+} * App;
+
+static App applications[MAX_APPLICATIONS + 1];
 
 void xengine_init(){
 
@@ -16,9 +24,21 @@ void xengine_init(){
 
 }
 
-void xengine_renderWidget(void* app){
+void xengine_renderWidget(App win){
 
-	
+	int x;
+	int y;
+	char* view = win->getView(NULL);
+
+	for (y = 0; y < win->lenY; y++){
+
+		for (x = 0; x < win->lenX; x++){
+
+			mvprintw(win->posY + y, win->posX + x, "%c", view[x + (y * win->lenY) - 1]);
+
+		}
+
+	}
 
 }
 
