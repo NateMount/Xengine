@@ -1,3 +1,8 @@
 #! /bin/bash
 
-gcc -o Xengine -Wall -Wextra Xengine.c -lncurses
+gcc -o Xengine -Wall -Wextra -pedantic src/Xengine.c -lncurses
+
+if [[ $1 == "-r" ]] 
+then
+	./Xengine
+fi
