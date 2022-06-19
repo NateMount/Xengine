@@ -5,4 +5,5 @@ gcc -o Xengine -Wall -Wextra -pedantic src/Xengine.c -lncurses
 if [[ $1 == "-r" ]] 
 then
 	./Xengine
+	rm -f Xengine
 fi
