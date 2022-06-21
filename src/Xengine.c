@@ -4,6 +4,7 @@
 #include <stdlib.h>
 
 #include "xengine_applib.h"
+#include "xengine_std.h"
 
 static int maxX, maxY;
 static int ch;
@@ -57,8 +58,8 @@ int main( int argc, char* argv[] ){
 
 	initscr();
 	raw();
-	noecho();
 	cbreak();
+	noecho();
 	keypad(stdscr, TRUE);
 	getmaxyx(stdscr, maxY, maxX);
 
