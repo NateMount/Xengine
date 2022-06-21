@@ -1,6 +1,10 @@
 #! /bin/bash
 
-gcc -o Xengine -Wall -Wextra -pedantic src/Xengine.c -lncurses -lpthread
+gcc -c src/xengine_applib.c
+gcc -c src/Xengine.c
+gcc -o Xengine -Wall -Wextra -pedantic xengine_applib.o Xengine.o -lncurses -lpthread
+rm -f xengine_applib.o
+rm -f Xengine.o
 
 if [[ $1 == "-r" ]] 
 then
