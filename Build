@@ -1,12 +1,8 @@
 #! /bin/bash
 
-gcc -c src/xengine_applib.c
-gcc -c src/xengine_std.c
-gcc -c src/Xengine.c
+gcc -c src/xengine_applib.c src/xengine_std.c src/Xengine.c
 gcc -o Xengine -Wall -Wextra -pedantic xengine_applib.o xengine_std.o Xengine.o -lncurses -lpthread
-rm -f xengine_applib.o
-rm -f xengine_std.o
-rm -f Xengine.o
+rm -f xengine_applib.o xengine_std.o Xengine.o
 
 if [[ $1 == "-r" ]] 
 then
