@@ -1,7 +1,7 @@
 #ifndef __xengine_applib
 #define __xengine_applib
 
-#define MAX_APPS 12
+#define MAX_APPS 25
 
 typedef struct _app_st {
 
