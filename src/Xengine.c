@@ -2,10 +2,12 @@
 #include <string.h>
 #include <ncurses.h>
 #include <stdlib.h>
+
 #include "xengine_applib.h"
 
 static int maxX, maxY;
 static int ch;
+static App apps[MAX_APPS];
 
 void xengine_inputManager(){
 
@@ -35,6 +37,12 @@ void xengine_viewManager(){
 
 void xengine_terminate(){
 
+	int i;
+
+	for (i = 0; i < MAX_APPS; i++){
+		delApp(apps[i]);
+	}
+
 	endwin();
 
 }
@@ -53,6 +61,8 @@ int main( int argc, char* argv[] ){
 	cbreak();
 	keypad(stdscr, TRUE);
 	getmaxyx(stdscr, maxY, maxX);
+
+	apps[0] = makeApp(10,10,20,20,NULL,NULL);
 
 	xengine_viewManager();	
 
