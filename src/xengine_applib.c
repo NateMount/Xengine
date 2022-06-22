@@ -1,6 +1,6 @@
 #include "xengine_applib.h"
 
-App makeApp(int start_x, int start_y, int height, int width, void* (*init)(void*), void* (*update)(void*)){
+App makeApp(int start_x, int start_y, int height, int width, updateObj (*init)(void), void* (*update)(updateObj event)){
 
 	App new = (App) malloc(sizeof(struct _app_st));
 	new->view = newwin(height, width, start_y, start_x);
