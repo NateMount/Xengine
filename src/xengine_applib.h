@@ -7,15 +7,16 @@
 #define MAX_APPS 25
 
 // Update Signals
-#define INIT_FAILURE 0
-#define INIT_WAIT 1
-#define INIT_DROP 2
-#define FREEZE 3
-#define THAW 4
-#define HIDE 5
-#define SHOW 6
-#define PETRIFY 7
-#define FREE 8
+#define SIGNULL 0
+#define INIT_FAILURE 1
+#define INIT_WAIT 2
+#define INIT_DROP 3
+#define FREEZE 4
+#define THAW 5
+#define HIDE 6
+#define SHOW 7
+#define PETRIFY 8
+#define FREE 9
 #define MULTISIG(sigA, sigB) (( sigA * 10 ) + sigB )
 
 // Xengine Mode
