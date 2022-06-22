@@ -9,12 +9,15 @@
 static int maxX, maxY;
 static int ch;
 static App apps[MAX_APPS];
+static char* views[MAX_APPS];
 
 void xengine_inputManager(){
 
-	while ((ch = getchar()) != '@'){
+	int i;
 
-		
+	while (1){
+
+		ch = getchar();
 
 	}
 
@@ -22,7 +25,18 @@ void xengine_inputManager(){
 
 void xengine_renderView(){
 
-	mvprintw(10,10,"God please work");
+	int i;
+	char* u;
+
+	for (i = 0; i < MAX_APPS; i++){
+
+		if ( apps[i] != NULL ) {
+			//u = (char*) apps[i]->update(ch);
+			
+			wrefresh(apps[i]->view);
+		}
+
+	}
 
 }
 
@@ -62,6 +76,8 @@ int main( int argc, char* argv[] ){
 	noecho();
 	keypad(stdscr, TRUE);
 	getmaxyx(stdscr, maxY, maxX);
+
+	curs_set(0);
 
 	apps[0] = makeApp(10,10,20,20,NULL,NULL);
 
