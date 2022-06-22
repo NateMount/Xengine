@@ -1,12 +1,19 @@
 #ifndef __xengine_applib
 #define __xengine_applib
 
+#include <ncurses.h>
+#include <stdlib.h>
+
 #define MAX_APPS 25
+
+#define INIT_FAILURE 0
+#define INIT_WAIT 1
+#define INIT_DROP 2
 
 typedef struct _app_st {
 
 	WINDOW* view;
-	void* (*init)(void*);
+	void* (*init)(void);
 	void* (*update)(void*);
 
 } * App;

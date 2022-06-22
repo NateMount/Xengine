@@ -1,5 +1,3 @@
-#include <ncurses.h>
-#include <stdlib.h>
 #include "xengine_applib.h"
 
 App makeApp(int start_x, int start_y, int height, int width, void* (*init)(void*), void* (*update)(void*)){
