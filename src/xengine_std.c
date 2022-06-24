@@ -16,3 +16,9 @@ void* xengine_std_passthroughUpdate( updateObj obj ){
 	return tmp;
 
 }
+
+void xengine_std_cmdbar(){
+
+	
+
+}
