@@ -17,9 +17,10 @@ void delUpdateObject(updateObj obj){
 
 }
 
-App makeApp(int start_x, int start_y, int height, int width, updateObj (*init)(void), void* (*update)(updateObj event)){
+App makeApp(int start_x, int start_y, int height, int width, char* name, updateObj (*init)(void), void* (*update)(updateObj event)){
 
 	App new = (App) malloc(sizeof(struct _app_st));
+	new->id = name;
 	new->view = newwin(height, width, start_y, start_x);
 	new->init = init;
 	new->update = update;
@@ -37,3 +38,14 @@ void delApp(App app){
 	free(app);
 
 }
+
+/*
+void renderApp( App app ){
+
+	refresh();
+	box(app->view, 0, 0);
+	mvwprintw(app->view,0,1,"[ %s ]", app->id);
+	wrefresh(app->view);
+
+}
+*/

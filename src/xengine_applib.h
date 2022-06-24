@@ -36,6 +36,7 @@ typedef struct _update_object_st {
 
 typedef struct _app_st {
 	WINDOW* view;
+	char* id;
 	updateObj (*init)(void);
 	void* (*update)( updateObj );
 } * App;
@@ -68,12 +69,14 @@ void delUpdateObject(updateObj obj);
 /// @param update : update function to be run each frame
 ///
 /// @return App: returns an App struct pointer
-App makeApp(int start_x, int start_y, int height, int width, updateObj (*init)(void), void* (*update)(updateObj event));
+App makeApp(int start_x, int start_y, int height, int width, char* name, updateObj (*init)(void), void* (*update)(updateObj event));
 
 /// Delete App
 /// Function to delete an App instance
 ///
 /// @param app : App to be deleted
 void delApp(App app);
+
+//void renderApp( App app )
 
 #endif
