@@ -32,10 +32,11 @@ void xengine_renderView(){
 	for (i = 0; i < MAX_APPS; i++){
 
 		if ( apps[i] != NULL ) {
-			
-			u = (char*) apps[i]->update(xengine_std_keyboardEvent(ch, mode));
-			
-			//mvwprintw(apps[i]->view, 0,0, "Test");
+		
+			if (apps[i]->update != NULL){
+				u = (char*) apps[i]->update(xengine_std_keyboardEvent(ch, mode));
+				//mvwprintw(apps[i]->view, 0,0, u);
+			}
 
 			wrefresh(apps[i]->view);
 		}
@@ -82,7 +83,9 @@ int main( int argc, char* argv[] ){
 
 	curs_set(0);
 
-	apps[0] = xengine_std_testApp();
+
+	apps[0] = makeApp(50, 100, 5, 20, "Mark", NULL, NULL);
+	renderApp(apps[0]);
 
 	xengine_viewManager();	
 
