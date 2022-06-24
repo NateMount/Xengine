@@ -69,7 +69,7 @@ void delUpdateObject(updateObj obj);
 /// @param update : update function to be run each frame
 ///
 /// @return App: returns an App struct pointer
-App makeApp(int start_x, int start_y, int height, int width, char* name, updateObj (*init)(void), void* (*update)(updateObj event));
+App makeApp(int height, int width, int start_x, int start_y, char* name, updateObj (*init)(void), void* (*update)(updateObj event));
 
 /// Delete App
 /// Function to delete an App instance
@@ -77,6 +77,10 @@ App makeApp(int start_x, int start_y, int height, int width, char* name, updateO
 /// @param app : App to be deleted
 void delApp(App app);
 
-//void renderApp( App app )
+/// Render App
+/// Function to properly render an app in accordance with Xengine standards
+///
+/// @param app : App to be rendered
+void renderApp( App app );
 
 #endif
