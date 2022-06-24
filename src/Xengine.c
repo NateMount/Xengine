@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <ncurses.h>
+#include <pthread.h>
 #include <stdlib.h>
 
 #include "xengine_applib.h"
@@ -84,7 +85,7 @@ int main( int argc, char* argv[] ){
 	curs_set(0);
 
 
-	apps[0] = makeApp(50, 100, 5, 20, "Mark", NULL, NULL);
+	apps[0] = makeApp(5, 25, 5, 20, "Mark", NULL, NULL);
 	renderApp(apps[0]);
 
 	xengine_viewManager();	
