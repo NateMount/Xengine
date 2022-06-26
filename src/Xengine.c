@@ -4,6 +4,7 @@
 #include <pthread.h>
 #include <stdlib.h>
 
+#include "xengine_util.h"
 #include "xengine_applib.h"
 #include "xengine_std.h"
 
@@ -11,16 +12,11 @@ static int maxX, maxY;
 static int ch;
 static int mode;
 static App apps[MAX_APPS];
-static char* views[MAX_APPS];
 
-void xengine_inputManager(){
+void* xengine_inputManager( void* cfg ){
 
-	int i;
-
-	while (1){
-
+	while (1) {
 		ch = getchar();
-
 	}
 
 }
@@ -35,8 +31,8 @@ void xengine_renderView(){
 		if ( apps[i] != NULL ) {
 		
 			if (apps[i]->update != NULL){
-				u = (char*) apps[i]->update(xengine_std_keyboardEvent(ch, mode));
-				//mvwprintw(apps[i]->view, 0,0, u);
+				u = (char*) apps[i]->update(xengine_std_keyboardEvent(ch, mode), apps[i]->buff);
+				mvwprintw(apps[i]->view, 1,1, u);
 			}
 
 			wrefresh(apps[i]->view);
@@ -47,7 +43,7 @@ void xengine_renderView(){
 }
 
 
-void xengine_viewManager(){
+void* xengine_viewManager( void* cfg ){
 
 	while (1){
 		xengine_renderView();
@@ -64,6 +60,8 @@ void xengine_terminate(){
 		delApp(apps[i]);
 	}
 
+	curs_set(1);
+
 	endwin();
 
 }
@@ -75,6 +73,9 @@ int main( int argc, char* argv[] ){
 		exit(EXIT_SUCCESS);
 	}
 
+	pthread_t display_manager;
+	pthread_t input_manager;
+
 	initscr();
 	raw();
 	cbreak();
@@ -82,13 +83,18 @@ int main( int argc, char* argv[] ){
 	keypad(stdscr, TRUE);
 	getmaxyx(stdscr, maxY, maxX);
 
+	mode = COMMAND;
+
 	curs_set(0);
 
-
-	apps[0] = makeApp(5, 25, 5, 20, "Mark", NULL, NULL);
+	apps[0] = makeApp(25, 50, 10, 10, "NotePad", "", NULL, xengine_std_passthroughUpdate);
 	renderApp(apps[0]);
 
-	xengine_viewManager();	
+	pthread_create(&display_manager, NULL, xengine_viewManager, NULL);
+	pthread_create(&input_manager, NULL, xengine_inputManager, NULL);
+
+	pthread_join(input_manager, NULL);
+	pthread_join(display_manager, NULL);
 
 	xengine_terminate();
 	exit(EXIT_SUCCESS);
