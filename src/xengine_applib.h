@@ -4,6 +4,8 @@
 #include <ncurses.h>
 #include <stdlib.h>
 
+#include "xengine_util.h"
+
 #define MAX_APPS 25
 
 // Update Signals
@@ -37,8 +39,9 @@ typedef struct _update_object_st {
 typedef struct _app_st {
 	WINDOW* view;
 	char* id;
+	char* buff;
 	updateObj (*init)(void);
-	void* (*update)( updateObj );
+	char* (*update)( updateObj event, char* buff );
 } * App;
 
 
@@ -69,7 +72,7 @@ void delUpdateObject(updateObj obj);
 /// @param update : update function to be run each frame
 ///
 /// @return App: returns an App struct pointer
-App makeApp(int height, int width, int start_x, int start_y, char* name, updateObj (*init)(void), void* (*update)(updateObj event));
+App makeApp(int height, int width, int start_x, int start_y, char* name, char* buff, updateObj (*init)(void), char* (*update)(updateObj event, char* buff));
 
 /// Delete App
 /// Function to delete an App instance
