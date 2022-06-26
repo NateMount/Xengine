@@ -10,3 +10,7 @@ then
 	./Xengine
 	rm -f Xengine
 fi
+
+#Used to ensure cursor returns to visible state after code execution
+tput cnorm
+clear
