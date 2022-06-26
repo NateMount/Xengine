@@ -1,16 +1,20 @@
 #! /bin/bash
 
+#COLOR_FLAG=0
+#COLORS=$(tput colors 2> /dev/null)
+#if [ $? = 0 ] && [ &COLORS -gt 2 ]; then
+#	COLOR_FLAG=1
+#fi
+
 gcc -c src/*.c
-gcc -o Xengine -Wall -Wextra -pedantic *.o -lncurses -lpthread
+gcc -o Xengine -Wall -Wextra -pedantic *.o -lncurses -lpthread #-D COLOR=$COLOR_FLAG
 
 rm -f xengine_applib.o xengine_std.o Xengine.o
 
-if [[ $1 == "-r" ]] 
-then
+if [[ $1 == "-r" ]] || [[ $2 == "-r" ]]; then
 	./Xengine
 	rm -f Xengine
 fi
 
-#Used to ensure cursor returns to visible state after code execution
 tput cnorm
 clear
