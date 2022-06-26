@@ -7,18 +7,22 @@ updateObj xengine_std_keyboardEvent(int ch, unsigned char mode){
 
 }
 
-void* xengine_std_passthroughUpdate( updateObj obj ){
+char* xengine_std_passthroughUpdate( updateObj obj, char* buff ){
 
-	char* tmp = (char*) obj->data;
+	if (obj->data != NULL){
+		strncat(buff, (char*) obj->data, 1);
+	}
 
 	delUpdateObject( obj );
-	
-	return tmp;
+
+	return buff;
 
 }
 
-void xengine_std_cmdbar(){
+char* xengine_std_helloXengineUpdate( updateObj obj, char* buff ){
 
-	
+	delUpdateObject( obj );
+
+	return "Hello Xengine";
 
 }
